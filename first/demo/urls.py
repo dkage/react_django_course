@@ -3,5 +3,6 @@ from .views import *
 
 urlpatterns = [
     path('', first_function),
-    path('class_based', )
+    path('another', AnotherView.as_view()),
+    path('test', AnotherView.test)
 ]
