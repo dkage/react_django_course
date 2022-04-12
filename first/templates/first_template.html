@@ -22,7 +22,9 @@
     {{ books }}
 
     {% for book in books %}
-        <p>{{ book.title }}</p>
+        {% if book.is_published %}
+            <p>{{ book.title }}</p>
+        {% endif %}
     {% endfor %}
 </p>
 
