@@ -12,7 +12,19 @@
 <h1>
     This is my first template test
 </h1>
+<p>
+    Dynamic loaded string: {{ data }}
+</p>
 
+<h2>Books</h2>
+
+<p>
+    {{ books }}
+
+    {% for book in books %}
+        <p>{{ book.title }}</p>
+    {% endfor %}
+</p>
 
 </body>
 </html>

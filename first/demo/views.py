@@ -5,7 +5,6 @@ from .models import Book
 from django.shortcuts import render
 
 
-
 class AnotherView(View):
     # books = Book.objects.all()
     # books = Book.objects.filter(is_published=True)
@@ -28,8 +27,11 @@ class AnotherView(View):
     def get(self, request):
         return HttpResponse(self.output)
 
+
 def template_test(request):
-    return render(request, 'first_template.html')
+    books = Book.objects.all()
+
+    return render(request, 'first_template.html', {'data': 'this is a test string from urls', 'books': books})
 
 
 def first_function(request):
