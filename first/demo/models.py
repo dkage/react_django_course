@@ -1,6 +1,13 @@
 from django.db import models
 
 
+# class BaseModel(models.Model): # workaround for django highlight without pycharm professional
+#     objects = models.Manager()
+#
+#     class Meta:
+#         abstract = True
+
+
 class Book(models.Model):
     title = models.CharField(max_length=36, blank=False, unique=True)
     description = models.TextField(max_length=256, blank=True)
