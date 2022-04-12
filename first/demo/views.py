@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View
 from .models import Book
+from django.shortcuts import render
+
 
 
 class AnotherView(View):
@@ -26,6 +28,8 @@ class AnotherView(View):
     def get(self, request):
         return HttpResponse(self.output)
 
+def template_test(request):
+    return render(request, 'first_template.html')
 
 
 def first_function(request):
