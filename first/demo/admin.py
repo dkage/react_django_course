@@ -14,3 +14,13 @@ class BookAdmin(admin.ModelAdmin):
 @admin.register(BookNumber)
 class BookNumber(admin.ModelAdmin):
     list_display = ['id', 'isbn_10', 'isbn_13']
+
+
+@admin.register(Character)
+class Character(admin.ModelAdmin):
+    list_display = ['id', 'name', 'book']
+
+
+@admin.register(Author)
+class Character(admin.ModelAdmin):
+    list_display = ['id', 'name', 'surname']
