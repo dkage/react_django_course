@@ -3,3 +3,5 @@ db.sqlite3
 
 /first/demo/migrations/*
 /first/covers/
+
+/MovieRater/api/migrations/*
