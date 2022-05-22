@@ -1,9 +1,8 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from django.core.exceptions import ObjectDoesNotExist
+from django.db import IntegrityError
 from .serializers import *
-from django.shortcuts import render
 
 
 class MovieViewSet(viewsets.ModelViewSet):
@@ -25,14 +24,17 @@ class RatingViewSet(viewsets.ModelViewSet):
         try:
             movie = Movie.objects.get(id=request.data['movie'])
         except Movie.DoesNotExist:
-            return Response('Movie ID invalid', status=401)
+            return Response('Movie ID invalid', status=status.HTTP_404_NOT_FOUND)
         try:
             user = User.objects.get(id=request.data['user'])
         except User.DoesNotExist:
-            return Response('Movie ID invalid', status=401)
+            return Response('User ID invalid', status=status.HTTP_404_NOT_FOUND)
 
         rating = Rating(stars=request.data['stars'], movie_id=movie.id, user_id=user.id)
-        rating.save()
+        try:
+            rating.save()
+        except IntegrityError:
+            return Response('Unique constraint error.', status=status.HTTP_400_BAD_REQUEST)
 
         serializer = RatingSerializer(rating)
 
