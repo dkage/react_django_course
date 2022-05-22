@@ -20,6 +20,8 @@ class RatingViewSet(viewsets.ModelViewSet):
     serializer_class = RatingSerializer
 
     def create(self, request, **kwargs):
+        if 'movie' not in request.data or 'stars' not in request.data or 'user' not in request.data:
+            return Response('Request missing data', status=status.HTTP_400_BAD_REQUEST)
 
         try:
             movie = Movie.objects.get(id=request.data['movie'])
@@ -39,5 +41,28 @@ class RatingViewSet(viewsets.ModelViewSet):
         serializer = RatingSerializer(rating)
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    def update(self, request, **kwargs):
+
+        if 'pk' not in kwargs:
+            return Response('No PK on url request', status=status.HTTP_400_BAD_REQUEST)
+        try:
+            rating = Rating.objects.get(id=kwargs['pk'])
+            print(rating.stars)
+        except Rating.DoesNotExist:
+            return Response('Rating ID invalid', status=status.HTTP_404_NOT_FOUND)
+
+        if 'movie' in request.data:
+            print('inside this shit')
+            try:
+                movie = Movie.objects.get(id=request.data['movie'])
+            except Movie.DoesNotExist:
+                return Response('Movie ID invalid', status=status.HTTP_404_NOT_FOUND)
+            rating.movie = movie
+        if 'stars' in request.data:
+            rating.stars = request.data['stars']
+        rating.save()
+
+        return Response(RatingSerializer(rating).data, status=status.HTTP_200_OK)
 
 
