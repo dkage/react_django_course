@@ -10,9 +10,21 @@ class MovieViewSet(viewsets.ModelViewSet):
     serializer_class = MovieSerializer
 
     @action(detail=True, methods=['POST'])
-    def rate_movie(self, request):
-        response = {'message': "It's working."}
-        return Response(response, status=status.HTTP_201_CREATED)
+    def rate_movie(self, request, pk=None):
+
+        if 'stars' in request.data:
+            movie = Movie.objects.get(id=pk)
+            user = User.objects.get(id=1)
+
+            try:
+                rating = Rating.objects.get(user=user, movie=movie)
+                rating.stars = request.data['stars']
+            except Rating.DoesNotExist:
+                rating = Rating.objects.create(stars=request.data['stars'], user=user, movie=movie)
+            rating.save()
+            return Response(RatingSerializer(rating).data, status=status.HTTP_201_CREATED)
+        else:
+            return Response('Missing stars', status=status.HTTP_400_BAD_REQUEST)
 
 
 class RatingViewSet(viewsets.ModelViewSet):
