@@ -40,12 +40,11 @@ class RatingViewSet(viewsets.ModelViewSet):
 
         try:
             movie = Movie.objects.get(id=request.data['movie'])
-        except Movie.DoesNotExist:
-            return Response('Movie ID invalid', status=status.HTTP_404_NOT_FOUND)
-        try:
             user = User.objects.get(id=request.data['user'])
+        except Movie.DoesNotExist:
+            return Response('Movie ID not found on database', status=status.HTTP_404_NOT_FOUND)
         except User.DoesNotExist:
-            return Response('User ID invalid', status=status.HTTP_404_NOT_FOUND)
+            return Response('User ID not found on database', status=status.HTTP_404_NOT_FOUND)
 
         rating = Rating(stars=request.data['stars'], movie_id=movie.id, user_id=user.id)
         try:
