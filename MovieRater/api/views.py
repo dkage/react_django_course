@@ -19,10 +19,13 @@ class MovieViewSet(viewsets.ModelViewSet):
             try:
                 rating = Rating.objects.get(user=user, movie=movie)
                 rating.stars = request.data['stars']
+                return Response({'message': 'Rating updated', 'result': RatingSerializer(rating).data},
+                                status=status.HTTP_201_CREATED)
             except Rating.DoesNotExist:
                 rating = Rating.objects.create(stars=request.data['stars'], user=user, movie=movie)
             rating.save()
-            return Response(RatingSerializer(rating).data, status=status.HTTP_201_CREATED)
+            return Response({'message': 'Rating created', 'result': RatingSerializer(rating).data},
+                            status=status.HTTP_201_CREATED)
         else:
             return Response('Missing stars', status=status.HTTP_400_BAD_REQUEST)
 
@@ -52,7 +55,8 @@ class RatingViewSet(viewsets.ModelViewSet):
 
         serializer = RatingSerializer(rating)
 
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response({'message': 'Rating created', 'result': serializer.data},
+                        status=status.HTTP_201_CREATED)
 
     def update(self, request, **kwargs):
 
@@ -75,6 +79,5 @@ class RatingViewSet(viewsets.ModelViewSet):
             rating.stars = request.data['stars']
         rating.save()
 
-        return Response(RatingSerializer(rating).data, status=status.HTTP_200_OK)
-
-
+        return Response({'message': 'Rating updated', 'result': RatingSerializer(rating).data},
+                        status=status.HTTP_200_OK)
