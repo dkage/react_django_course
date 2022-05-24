@@ -2,19 +2,21 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 from django.db import IntegrityError
 from .serializers import *
 
 
 class UserViewSet(viewsets.ModelViewSet):
+    permission_classes = (AllowAny, )
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
     # This methods rewrite were made to restrict the access to methods listing users and showing password on
     # UserSerializer, but using the 'writeOnly':True property solves the password on GET problem.
-    # def list(self, request, **kwargs):
-    #     response = {'message': 'List GET function is not offered in this endpoint.'}
-    #     return Response(response, status=status.HTTP_403_FORBIDDEN)
+    def list(self, request, **kwargs):
+        response = {'message': 'List GET function is not offered in this endpoint.'}
+        return Response(response, status=status.HTTP_403_FORBIDDEN)
 
     def retrieve(self, request, **kwargs):
         response = {'message': 'Retrieve GET function is not offered in this endpoint.'}
@@ -22,7 +24,8 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class MovieViewSet(viewsets.ModelViewSet):
-    authentication_classes = (TokenAuthentication, )
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
