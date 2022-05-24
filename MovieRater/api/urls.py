@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from .views import *
 
 router = routers.DefaultRouter()
+router.register('users', UserViewSet)
 router.register('movies', MovieViewSet)
 router.register('ratings', RatingViewSet)
 
