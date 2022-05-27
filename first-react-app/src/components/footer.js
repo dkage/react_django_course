@@ -3,8 +3,14 @@ import React, { Component } from "react";
 
 class Footer extends Component {
 
-    changed () {
-        console.log('changed');
+    state = {
+        name: 'First_name Surname',
+    }
+
+    changed = event => {
+        // console.log('changed', event.target.value);
+        this.setState({name: event.target.value})
+        console.log(this.state.name);
     }
 
     render() {
@@ -13,7 +19,7 @@ class Footer extends Component {
                 <h2 onClick={this.props.myAlert}>
                     {this.props.trademark}
                 </h2>
-                <input onChange={this.changed} type="text"/>
+                <input value={this.state.name} onChange={this.changed} type="text"/>
             </div>
         )
     }
