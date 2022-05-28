@@ -4,13 +4,16 @@ import React, { Component } from "react";
 class Footer extends Component {
 
     state = {
-        name: 'First_name Surname',
+        name: '',
     }
 
     changed = event => {
-        // console.log('changed', event.target.value);
         this.setState({name: event.target.value})
         console.log(this.state.name);
+    }
+
+    componentDidMount() {
+        this.setState({name: 'MyName test'})
     }
 
     render() {

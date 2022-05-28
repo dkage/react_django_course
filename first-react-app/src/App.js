@@ -8,6 +8,10 @@ function createAlert() {
     alert('Test alert');
 }
 
+function ShowMessage () {
+    return <h2>Message test from function</h2>
+}
+
 
 function App() {
 
@@ -18,6 +22,8 @@ function App() {
             <p>main</p>
 
             <Footer myAlert={createAlert} trademark={'copyright'}/>
+
+            <ShowMessage toShow={true}/>
         </div>
     );
 
