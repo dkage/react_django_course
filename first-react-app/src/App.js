@@ -8,8 +8,13 @@ function createAlert() {
     alert('Test alert');
 }
 
-function ShowMessage () {
-    return <h2>Message test from function</h2>
+function ShowMessage (props) {
+    if (props.toShow) {
+        return <h2>Message test from function - props=true</h2>
+    }
+    else {
+        return <h2>no message</h2>
+    }
 }
 
 
