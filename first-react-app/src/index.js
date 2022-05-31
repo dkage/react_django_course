@@ -8,22 +8,30 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 
 
+const context = React.createContext();
+console.log(context);
+export const cxtConsumer = context.Consumer;
+
+const animals = ['snake', 'bird', 'owl', 'ox'];
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <React.StrictMode>
+    <React.StrictMode>
 
-      <BrowserRouter>
+        <BrowserRouter>
+            <context.Provider value={{animals: animals}}>
+                <div>
+                    <Routes>
+                        <Route path="/" element={<App/>}/>
+                        <Route path="/header" element={<Header/>}/>
+                        <Route path="/footer" element={<Footer/>}/>
+                    </Routes>
+                </div>
+            </context.Provider>
+        </BrowserRouter>
 
-          <Routes>
-              <Route path="/" element={<App/>}/>
-              <Route path="/header" element={<Header/>}/>
-              <Route path="/footer" element={<Footer/>}/>
-          </Routes>
-
-      </BrowserRouter>
-
-  </React.StrictMode>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { cxtConsumer as CxtConsumer } from "../index";
 
 
 class Footer extends Component {
@@ -19,7 +20,7 @@ class Footer extends Component {
 
     render() {
 
-        const animals = ['cat', 'dog', 'horse', 'elephant'];
+        // const animals = ['cat', 'dog', 'horse', 'elephant'];
 
 
             // Conditionals testing class
@@ -38,12 +39,13 @@ class Footer extends Component {
         // )
 
         return (
-            <div>
-                { animals.map(animal => {return <div id={animal} key={animal}>
-                                                    <h2>{animal}</h2>
-                                                </div>})}
-
-            </div>
+                <CxtConsumer>
+                    { (context) => (
+                        context.animals.map( animal => {
+                            return <h1 key={animal}>{animal}</h1>
+                        })
+                    )}
+                </CxtConsumer>
         )
     }
 }

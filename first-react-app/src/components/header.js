@@ -9,7 +9,6 @@ function Header(props) {
     //         <h2>Number passed: {props.number_test}</h2>
     //     </div>
     // )
-    console.log(props);
     return (
         <React.Fragment>
             <h1>Info: {props.info}</h1>
