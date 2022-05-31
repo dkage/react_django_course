@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import './App.css';
+import styled from 'styled-components';
 
 
 function createAlert() {
@@ -17,6 +18,16 @@ function ShowMessage (props) {
     }
 }
 
+const pStyle = {
+    fontSize: '2em',
+    color: 'red'
+}
+
+const ParagraphStyled = styled.p`
+    font-size: 4em;
+    color: blue;
+`;
+
 
 function App() {
 
@@ -24,7 +35,9 @@ function App() {
         <div className="App">
             <Header info={'Header receiving parameter props'} number_test={6}/>
 
-            <p>main</p>
+            <p style={pStyle}>Main</p>
+            <p style={{color: 'green', backgroundColor: "red"}}>Second</p>
+            <ParagraphStyled>Third</ParagraphStyled>
 
             <Footer myAlert={createAlert} trademark={'copyright'}/>
 
