@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import Numbers from "./components/numbers";
 import './App.css';
 import styled from 'styled-components';
 
@@ -33,15 +34,17 @@ function App() {
 
     return (
         <div className="App">
-            <Header info={'Header receiving parameter props'} number_test={6}/>
+            {/*<Header info={'Header receiving parameter props'} number_test={6}/>*/}
 
-            <p style={pStyle}>Main</p>
-            <p style={{color: 'green', backgroundColor: "red"}}>Second</p>
-            <ParagraphStyled>Third</ParagraphStyled>
+            {/*<p style={pStyle}>Main</p>*/}
+            {/*<p style={{color: 'green', backgroundColor: "red"}}>Second</p>*/}
+            {/*<ParagraphStyled>Third</ParagraphStyled>*/}
 
-            <Footer myAlert={createAlert} trademark={'copyright'}/>
+            {/*<Footer myAlert={createAlert} trademark={'copyright'}/>*/}
 
-            <ShowMessage toShow={true}/>
+            {/*<ShowMessage toShow={true}/>*/}
+
+            <Numbers/>
         </div>
     );
 
