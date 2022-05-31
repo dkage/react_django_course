@@ -22,6 +22,7 @@ class Footer extends Component {
         const animals = ['cat', 'dog', 'horse', 'elephant'];
 
 
+            // Conditionals testing class
         // return (
         //     <div>
         //
