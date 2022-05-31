@@ -18,16 +18,29 @@ class Footer extends Component {
     }
 
     render() {
+
+        const animals = ['cat', 'dog', 'horse', 'elephant'];
+
+
+        // return (
+        //     <div>
+        //
+        //         <input value={this.state.name} onChange={this.changed} type="text"/>
+        //
+        //         { this.state.age === 35 ?
+        //                 <h2 onClick={this.props.myAlert}>
+        //                     {this.props.trademark}
+        //                 </h2>
+        //             : "No"}
+        //
+        //     </div>
+        // )
+
         return (
             <div>
-
-                <input value={this.state.name} onChange={this.changed} type="text"/>
-
-                { this.state.age === 35 ?
-                        <h2 onClick={this.props.myAlert}>
-                            {this.props.trademark}
-                        </h2>
-                    : "No"}
+                { animals.map(animal => {return <div id={animal} key={animal}>
+                                                    <h2>{animal}</h2>
+                                                </div>})}
 
             </div>
         )
