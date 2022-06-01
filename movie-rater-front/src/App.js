@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import './App.css';
 
+
+
 function App() {
 
     const [movies, setMovie] = useState(['Movie 1', 'Movie 2']);
@@ -13,7 +15,7 @@ function App() {
                 'Authorization': 'Token 0d87fdef371f4fcffd3fd0f9d2c4964bd3d38988'
             }
         }).then(r => r.json())
-            .then(r => setMovie(r.json))
+            .then(r => setMovie(r))
     }, []);
 
     return (
@@ -28,7 +30,7 @@ function App() {
                         <h2>Movie List</h2>
                         <br/>
                         { movies.map( movie => {
-                            return <h3 key={movie}> {movie} </h3>
+                            return <h3 key={movie.id}> {movie.title} </h3>
                             })
                         }
 
