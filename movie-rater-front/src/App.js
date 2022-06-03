@@ -5,7 +5,13 @@ import MovieList from "./components/movie_list";
 
 function App() {
 
+    // State related and fixed variables/constants
     const [movies, setMovie] = useState(['Movie 1', 'Movie 2']);
+    const [selectedMovie, setSelectedMovie] = useState(undefined);
+
+    // Arrow Functions
+    const movieClicked = movie => { console.log(movie) };
+
 
     useEffect(() => {
         fetch("http://127.0.0.1:8000/api/v1/movies/", {
@@ -30,7 +36,7 @@ function App() {
                         <h2>Movie List</h2>
                         <br/>
 
-                        <MovieList movies={movies}/>
+                        <MovieList movies={movies} movieClicked={movieClicked}/>
 
                     </div>
 

@@ -3,10 +3,19 @@ import React from "react";
 
 function MovieList (props) {
 
+    const movieClicked = movie => clickEvent => {
+        props.movieClicked(movie);
+    }
+
     return (
         <div>
             { props.movies && props.movies.map( movie => {
-                return <h3 key={movie.id}> {movie.title} </h3>
+                return (
+
+                    <div key={movie.id}>
+                        <h3 onClick={movieClicked('testing')}> {movie.title} </h3>
+                    </div>
+                )
             })}
         </div>
     )
