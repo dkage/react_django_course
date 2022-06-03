@@ -12,3 +12,53 @@ the basics of React.
 
 As everytime I worked with Django I used the Django templates to generate the front-end, I didn't know the
 structure of a Django API.
+
+
+# Personal Notes
+
+#### Progress
+
+- [x] Django API rest framework basics
+- [x] React basics
+- [x] Django project
+- [ ] React project
+- [ ] Deployment :tada:
+
+## Babel config for dynamic calls to font-awesome
+
+For using Babel, the best way I found was creating the `.babelrc` file or project root
+
+So on react project create: 
+
+`/src/.babelrc`
+
+And add to the file:
+
+```json
+{
+  "plugins": ["macros"]
+}
+```
+
+
+I don't know why but using the method on the font-awesome docs, by creating `babel.config.js` caused warnings showing on top of content, 
+stating that the `api` parameter was not being assigned a `api.cache` value.
+
+
+Even when actually passing the correct values as stated in the error page showing on top of dom body content, the error persisted.
+
+So for **font-awesome**, create `.babelrc` with json value shown above.
+
+Create also on project root:
+
+`/src/babel-plugin-macros.config.js`
+
+This one works just like it shows on the **font-awesome** docs.
+
+```javascript 1.8
+module.exports = {
+    'fontawesome-svg-core': {
+        'license': 'free'
+    }
+}
+```
