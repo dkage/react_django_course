@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import './App.css';
-
+import MovieList from "./components/movie_list";
 
 
 function App() {
@@ -29,10 +29,8 @@ function App() {
                     <div>
                         <h2>Movie List</h2>
                         <br/>
-                        { movies.map( movie => {
-                            return <h3 key={movie.id}> {movie.title} </h3>
-                            })
-                        }
+
+                        <MovieList movies={movies}/>
 
                     </div>
 
