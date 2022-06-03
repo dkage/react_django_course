@@ -11,7 +11,7 @@ function App() {
     const [selectedMovie, setSelectedMovie] = useState(undefined);
 
     // Arrow Functions
-    const movieClicked = movie => { console.log(movie) };
+    const movieClicked = movie => { setSelectedMovie(movie) };
 
 
     useEffect(() => {

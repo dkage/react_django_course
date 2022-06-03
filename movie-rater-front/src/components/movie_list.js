@@ -13,8 +13,9 @@ function MovieList (props) {
                 return (
 
                     <div key={movie.id}>
-                        <h3 onClick={movieClicked('testing')}> {movie.title} </h3>
+                        <h3 onClick={movieClicked(movie)}> {movie.title} </h3>
                     </div>
+
                 )
             })}
         </div>
