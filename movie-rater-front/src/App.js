@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import './App.css';
 import MovieList from "./components/movie_list";
+import MovieDetails from "./components/movie_details";
 
 
 function App() {
@@ -40,9 +41,7 @@ function App() {
 
                     </div>
 
-                    <div>
-                        <h2>Movie Details</h2>
-                    </div>
+                    <MovieDetails movie={selectedMovie}/>
 
                 </div>
 
