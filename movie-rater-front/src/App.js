@@ -7,7 +7,7 @@ import MovieDetails from "./components/movie_details";
 function App() {
 
     // State related and fixed variables/constants
-    const [movies, setMovie] = useState(['Movie 1', 'Movie 2']);
+    const [movies, setMovie] = useState([['null']]);
     const [selectedMovie, setSelectedMovie] = useState(undefined);
 
     // Arrow Functions
