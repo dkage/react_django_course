@@ -1,6 +1,7 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { solid, regular, brands } from "@fortawesome/fontawesome-svg-core/import.macro";
+import {faDivide} from "@fortawesome/free-solid-svg-icons";
 
 
 function MovieDetails (props) {
@@ -12,12 +13,35 @@ function MovieDetails (props) {
 
     if (props.movie) {
 
+        const mov = props.movie;
+
+
         return (
-            <div className={'MovieDetails'}>
-                <h1>{ props.movie.title }</h1>
-                <p>{ props.movie.synopsis }</p>
-                <p><FontAwesomeIcon icon={solid('star')}/></p>
-            </div>
+            <React.Fragment>
+                <div className={'MovieDetails'}>
+                    <h1>{ mov.title }</h1>
+                    <p>{ mov.synopsis }</p>
+
+
+                    <FontAwesomeIcon className={mov.average_rating > 0 ? 'orange' : ''} icon={solid('star')}/>
+                    <FontAwesomeIcon className={mov.average_rating > 1 ? 'orange' : ''} icon={solid('star')}/>
+                    <FontAwesomeIcon className={mov.average_rating > 2 ? 'orange' : ''} icon={solid('star')}/>
+                    <FontAwesomeIcon className={mov.average_rating > 3 ? 'orange' : ''} icon={solid('star')}/>
+                    <FontAwesomeIcon className={mov.average_rating > 4? 'orange' : ''} icon={solid('star')}/>
+
+                    <p>This movie was rated: {mov.ratings_counter} times.</p>
+
+
+                    <div className={"rate-container"}>
+                    <h2>Rate it now</h2>
+                </div>
+
+                </div>
+
+
+
+
+            </React.Fragment>
         )
 
     }

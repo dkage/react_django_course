@@ -38,3 +38,14 @@
 .ListItem:hover {
   color: lightseagreen;
 }
+
+
+.orange {
+  color: goldenrod;
+}
+
+
+.rate-container{
+  border: 5px solid purple;
+  border-radius: 25px;
+}

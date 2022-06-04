@@ -24,6 +24,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class MovieViewSet(viewsets.ModelViewSet):
+    # permission_classes = (AllowAny,)
     authentication_classes = (TokenAuthentication,)
     # permission_classes = (IsAuthenticatedOrReadOnly,)
 
