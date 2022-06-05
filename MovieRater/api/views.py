@@ -41,11 +41,12 @@ class MovieViewSet(viewsets.ModelViewSet):
             try:
                 rating = Rating.objects.get(user=user, movie=movie)
                 rating.stars = request.data['stars']
+                rating.save()
                 return Response({'message': 'Rating updated', 'result': RatingSerializer(rating).data},
                                 status=status.HTTP_201_CREATED)
             except Rating.DoesNotExist:
                 rating = Rating.objects.create(stars=request.data['stars'], user=user, movie=movie)
-            rating.save()
+                rating.save()
             return Response({'message': 'Rating created', 'result': RatingSerializer(rating).data},
                             status=status.HTTP_201_CREATED)
         else:

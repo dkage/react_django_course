@@ -1,13 +1,31 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { solid, regular, brands } from "@fortawesome/fontawesome-svg-core/import.macro";
 import {faDivide} from "@fortawesome/free-solid-svg-icons";
+import stringify from "json5";
 
 
 function MovieDetails (props) {
 
     const [ highlighted, setHighlighted ] = useState(-1)
     const mov = props.movie;
+
+    const highlightMethod = value => mouseClick => {
+        setHighlighted(value)
+    }
+
+    const ratePost = star_rating => mouseClick => {
+        fetch(`http://127.0.0.1:8000/api/v1/movies/${mov.id}/rate_movie/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Token 0d87fdef371f4fcffd3fd0f9d2c4964bd3d38988'
+            },
+            body: JSON.stringify( {stars: star_rating + 1} ),
+        }).then(resp => resp.json())
+            .then( resp => console.log(resp) )
+            .catch( error => console.log(error))
+    }
 
     /*
         For checking if props var exists, can also be used <h1>{ props.movie && props.movie.title }</h1>
@@ -40,8 +58,10 @@ function MovieDetails (props) {
                                 return <FontAwesomeIcon key={'rate_stars_' + i}
                                                         className={highlighted > (counter-1) ? 'purple' : ''}
                                                         icon={solid('star')}
-
-                                        />
+                                                        onMouseEnter={highlightMethod(i)}
+                                                        onMouseLeave={highlightMethod(-1)}
+                                                        onClick={ratePost(i)}
+                                />
                             })
                         }
                     </div>

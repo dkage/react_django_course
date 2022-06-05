@@ -50,6 +50,8 @@
 
 
 .rate-container{
+  font-size: 1.4rem;
   border: 5px solid purple;
   border-radius: 25px;
+  padding-bottom: 35px;
 }
