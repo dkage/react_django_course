@@ -12,7 +12,9 @@ function App() {
 
     // Arrow Functions
     const movieClicked = movie => { setSelectedMovie(movie) }; // Movie details setter
-
+    const loadMovie = movie => {
+        setSelectedMovie(movie);
+    }
 
     useEffect(() => {
         fetch("http://127.0.0.1:8000/api/v1/movies/", {
@@ -24,6 +26,8 @@ function App() {
         }).then(r => r.json())
             .then(r => setMovie(r))
     }, []);
+
+
 
     return (
         <div className="App">
@@ -41,7 +45,7 @@ function App() {
 
                     </div>
 
-                    <MovieDetails movie={selectedMovie}/>
+                    <MovieDetails movie={selectedMovie} updateMovie={loadMovie}/>
 
                 </div>
 

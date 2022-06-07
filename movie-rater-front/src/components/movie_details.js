@@ -22,8 +22,19 @@ function MovieDetails (props) {
                 'Authorization': 'Token 0d87fdef371f4fcffd3fd0f9d2c4964bd3d38988'
             },
             body: JSON.stringify( {stars: star_rating + 1} ),
+        }).then( () => getDetails() )
+            .catch( error => console.log(error))
+    }
+
+    const getDetails = () => {
+        fetch(`http://127.0.0.1:8000/api/v1/movies/${mov.id}/`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Token 0d87fdef371f4fcffd3fd0f9d2c4964bd3d38988'
+            },
         }).then(resp => resp.json())
-            .then( resp => console.log(resp) )
+            .then( resp => props.updateMovie(resp) )
             .catch( error => console.log(error))
     }
 
@@ -90,16 +101,16 @@ function MovieDetails (props) {
     /*
         For ternary instead of if-else, should be like below
     */
-    // return (
-    //     <div className={'MovieDetails'}>
-    //         { props.movie ? (
-    //             <React.Fragment>
-    //                 <h1>{props.movie.title}</h1>
-    //                 <h1>{props.movie.synopsis}</h1>
-    //             </React.Fragment>
-    //         ) : <h1>No Movie Selected</h1> }
-    //     </div>
-    // )
+// return (
+//     <div className={'MovieDetails'}>
+//         { props.movie ? (
+//             <React.Fragment>
+//                 <h1>{props.movie.title}</h1>
+//                 <h1>{props.movie.synopsis}</h1>
+//             </React.Fragment>
+//         ) : <h1>No Movie Selected</h1> }
+//     </div>
+// )
 
 
 
