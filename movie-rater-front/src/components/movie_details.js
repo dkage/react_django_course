@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { solid, regular, brands } from "@fortawesome/fontawesome-svg-core/import.macro";
 import {faDivide} from "@fortawesome/free-solid-svg-icons";
-import stringify from "json5";
 
 
 function MovieDetails (props) {

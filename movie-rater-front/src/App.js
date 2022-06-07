@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import './App.css';
 import MovieList from "./components/movie_list";
 import MovieDetails from "./components/movie_details";
+import MovieForm from "./components/movie_form";
 
 
 function App() {
@@ -9,11 +10,16 @@ function App() {
     // State related and fixed variables/constants
     const [movies, setMovie] = useState([['null']]);
     const [selectedMovie, setSelectedMovie] = useState(undefined);
+    const [editedMovie, setEditedMovie] = useState(undefined);
 
     // Arrow Functions
     const movieClicked = movie => { setSelectedMovie(movie) }; // Movie details setter
     const loadMovie = movie => {
         setSelectedMovie(movie);
+    }
+    const editClicked = movie => {
+        console.log(movie);
+        setEditedMovie(movie);
     }
 
     useEffect(() => {
@@ -41,11 +47,11 @@ function App() {
                         <h2>Movie List</h2>
                         <br/>
 
-                        <MovieList movies={movies} movieClicked={movieClicked}/>
-
+                        <MovieList movies={movies} movieClicked={movieClicked} editClicked={editClicked}/>
                     </div>
 
                     <MovieDetails movie={selectedMovie} updateMovie={loadMovie}/>
+                    <MovieForm movie={editedMovie}/>
 
                 </div>
 
