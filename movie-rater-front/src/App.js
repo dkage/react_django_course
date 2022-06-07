@@ -13,13 +13,13 @@ function App() {
     const [editedMovie, setEditedMovie] = useState(undefined);
 
     // Arrow Functions
-    const movieClicked = movie => { setSelectedMovie(movie) }; // Movie details setter
     const loadMovie = movie => {
         setSelectedMovie(movie);
+        setEditedMovie(undefined);
     }
-    const editClicked = movie => {
-        console.log(movie);
+    const editClicked  = movie => {
         setEditedMovie(movie);
+        setSelectedMovie(undefined);
     }
 
     useEffect(() => {
@@ -47,7 +47,7 @@ function App() {
                         <h2>Movie List</h2>
                         <br/>
 
-                        <MovieList movies={movies} movieClicked={movieClicked} editClicked={editClicked}/>
+                        <MovieList movies={movies} movieClicked={loadMovie} editClicked={editClicked}/>
                     </div>
 
                     <MovieDetails movie={selectedMovie} updateMovie={loadMovie}/>

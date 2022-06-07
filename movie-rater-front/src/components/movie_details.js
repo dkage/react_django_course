@@ -42,11 +42,13 @@ function MovieDetails (props) {
         but this way there is no "else" value to be printed if it doesn't.
     */
 
-    if (props.movie) {
+    // if (props.movie) {
 
         return (
             <React.Fragment>
-                <div key={'movie_det'} className={'MovieDetails'}>
+                {
+                    mov ? (
+                    <div key={'movie_det'} className={'MovieDetails'}>
 
                     <h1> { mov.title }     </h1>
                     <p>  { mov.synopsis }  </p>
@@ -77,25 +79,23 @@ function MovieDetails (props) {
                     </div>
 
                 </div>
-
-
-
-
+                    ) : null
+                }
             </React.Fragment>
         )
 
-    }
-    else {
-
-        return (
-            <div className={'MovieDetails'}>
-                <h1><FontAwesomeIcon icon={solid('clapperboard')}/> No Movie selected</h1>
-
-
-            </div>
-        )
-
-    }
+    // }
+    // else {
+    //
+    //     return (
+    //         <div className={'MovieDetails'}>
+    //             <h1><FontAwesomeIcon icon={solid('clapperboard')}/> No Movie selected</h1>
+    //
+    //
+    //         </div>
+    //     )
+    //
+    // }
 
     /*
         For ternary instead of if-else, should be like below

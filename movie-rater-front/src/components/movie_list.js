@@ -19,7 +19,7 @@ function MovieList (props) {
             { props.movies && props.movies.map( (movie, index) => {
                 return (
                     <div key={'movie_' + index}>
-                        <div key={movie.id}>
+                        <div key={movie.id} className={'movie-item'}>
                             <h3 className={'ListItem'} onClick={movieClicked(movie)}> {movie.title} </h3>
                             <FontAwesomeIcon icon={solid('edit')} onClick={() => editClicked(movie)}/>
                             <FontAwesomeIcon icon={solid('trash')}/>
