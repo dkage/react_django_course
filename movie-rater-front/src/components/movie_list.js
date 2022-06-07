@@ -21,8 +21,8 @@ function MovieList (props) {
                     <div key={'movie_' + index}>
                         <div key={movie.id} className={'movie-item'}>
                             <h3 className={'ListItem'} onClick={movieClicked(movie)}> {movie.title} </h3>
-                            <FontAwesomeIcon icon={solid('edit')} onClick={() => editClicked(movie)}/>
-                            <FontAwesomeIcon icon={solid('trash')}/>
+                            <FontAwesomeIcon className={'icon-svg'} icon={solid('edit')} onClick={() => editClicked(movie)}/>
+                            <FontAwesomeIcon className={'icon-svg'} icon={solid('trash')}/>
                         </div>
 
                     </div>
