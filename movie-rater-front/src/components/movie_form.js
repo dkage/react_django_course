@@ -9,6 +9,7 @@ function MovieForm (props) {
     const [synopsis, setSynopsis] = useState(mov.synopsis);
     const updateClicked = () => {
         API.updateMovie(mov.id, {title, synopsis}).then(r => console.log(r))
+            .catch( error => console.log(error) );
     }
 
     return (
