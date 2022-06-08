@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { API } from "../services/api-service"
 
 
 function MovieForm (props) {
@@ -7,9 +8,8 @@ function MovieForm (props) {
     const [title, setTitle] = useState(mov.title);
     const [synopsis, setSynopsis] = useState(mov.synopsis);
     const updateClicked = () => {
-        console.log('clicked')
+        API.updateMovie(mov.id, {title, synopsis}).then(r => console.log(r))
     }
-
 
     return (
         <React.Fragment>
