@@ -8,7 +8,7 @@ import MovieForm from "./components/movie_form";
 function App() {
 
     // State related and fixed variables/constants
-    const [movies, setMovie] = useState([['null']]);
+    const [movies, setMovies] = useState([['null']]);
     const [selectedMovie, setSelectedMovie] = useState(undefined);
     const [editedMovie, setEditedMovie] = useState(undefined);
 
@@ -21,6 +21,16 @@ function App() {
         setEditedMovie(movie);
         setSelectedMovie(undefined);
     }
+    const updatedMovie  = movie => {
+        const newMovies = movies.map( mov => {
+            if (mov.id === movie.id) {
+                return movie;
+            }
+            return mov;
+        } )
+
+        setMovies(newMovies);
+    }
 
     useEffect(() => {
         fetch("http://127.0.0.1:8000/api/v1/movies/", {
@@ -30,7 +40,7 @@ function App() {
                 'Authorization': 'Token 0d87fdef371f4fcffd3fd0f9d2c4964bd3d38988'
             }
         }).then(r => r.json())
-            .then(r => setMovie(r))
+            .then(r => setMovies(r))
     }, []);
 
 
@@ -51,7 +61,7 @@ function App() {
                     </div>
 
                     <MovieDetails movie={selectedMovie} updateMovie={loadMovie}/>
-                    { editedMovie ? <MovieForm movie={editedMovie}/> : null }
+                    { editedMovie ? <MovieForm movie={editedMovie} updatedMovie={updatedMovie}/> : null }
 
                 </div>
 
