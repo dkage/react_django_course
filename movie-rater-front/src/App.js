@@ -31,6 +31,14 @@ function App() {
 
         setMovies(newMovies);
     }
+    const newMovie = () => {
+        setEditedMovie({id: 'none', title: 'none_t', synopsis: 'none_s'})
+        setSelectedMovie(null)
+    }
+    const movieCreated = movie => {
+        const newMovieList = [...movies, movie];
+        setMovies(newMovieList);
+    }
 
     useEffect(() => {
         fetch("http://127.0.0.1:8000/api/v1/movies/", {
@@ -51,19 +59,29 @@ function App() {
             <header className="App-header">
                 <h1>Movie Rater - Web</h1>
             </header>
-                <div className={'Layout'}>
+            <div className={'Layout'}>
+
+                <div>
+                    <h2>Movie List</h2>
+                    <br/>
 
                     <div>
-                        <h2>Movie List</h2>
-                        <br/>
+                        <button onClick={newMovie}>New Movie</button>
+
+                        <br/><br/>
 
                         <MovieList movies={movies} movieClicked={loadMovie} editClicked={editClicked}/>
                     </div>
 
-                    <MovieDetails movie={selectedMovie} updateMovie={loadMovie}/>
-                    { editedMovie ? <MovieForm movie={editedMovie} updatedMovie={updatedMovie}/> : null }
-
                 </div>
+
+                <MovieDetails movie={selectedMovie} updateMovie={loadMovie}/>
+                { editedMovie
+                    ?
+                    <MovieForm movie={editedMovie} updatedMovie={updatedMovie} movieCreated={movieCreated}/>
+                    : null }
+
+            </div>
 
 
         </div>

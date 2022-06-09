@@ -12,6 +12,7 @@ function MovieList (props) {
 
     const editClicked = movie => {
         props.editClicked(movie);
+        console.log(movie);
     }
 
     return (
