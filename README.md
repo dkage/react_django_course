@@ -13,6 +13,9 @@ the basics of React.
 As everytime I worked with Django I used the Django templates to generate the front-end, I didn't know the
 structure of a Django API.
 
+<sub><sup>_By the way, my code logic and css differs a lot in many files from the classes, because I like to learn by challenge, stopping the videos and always trying 
+to make the code by myself first. Then I go back to the video and see the solution proposed.
+So many parts will differ from what is shown in the videos._</sub></sup>
 
 # Personal Notes
 
@@ -25,6 +28,9 @@ structure of a Django API.
 - [ ] Deployment :tada:
 
 ## Babel config for dynamic calls to font-awesome
+
+<sub><sup>_Even though the course does not use the Babel or dynamic calling the font-awesome icons,
+I spent some time trying to learn how to make it work by myself._</sub></sup>
 
 For using Babel, the best way I found was creating the `.babelrc` file or project root
 
