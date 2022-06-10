@@ -12,7 +12,7 @@ function App() {
     const [selectedMovie, setSelectedMovie] = useState(undefined);
     const [editedMovie, setEditedMovie] = useState(undefined);
 
-    // Arrow Functions
+    // Arrow Functions for handling movies
     const loadMovie = movie => {
         setSelectedMovie(movie);
         setEditedMovie(undefined);
