@@ -39,6 +39,11 @@ function App() {
         const newMovieList = [...movies, movie];
         setMovies(newMovieList);
     }
+    const movieDeleted = movie => {
+        const listWithoutDeleted = movies.filter(mov => movie.id !== mov.id);
+
+        setMovies(listWithoutDeleted);
+    }
 
     useEffect(() => {
         fetch("http://127.0.0.1:8000/api/v1/movies/", {
@@ -70,7 +75,7 @@ function App() {
 
                         <br/><br/>
 
-                        <MovieList movies={movies} movieClicked={loadMovie} editClicked={editClicked}/>
+                        <MovieList movies={movies} movieClicked={loadMovie} editClicked={editClicked} deleteClicked={movieDeleted}/>
                     </div>
 
                 </div>
