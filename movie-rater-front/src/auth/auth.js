@@ -1,15 +1,23 @@
-import React, {useState} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import { API } from "../services/api-service";
+import {AuthContext, TokenContext} from "../index.js";
 
 
 function Auth () {
 
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const {token, setToken} = useContext(TokenContext);
+
+    useEffect( () => {
+        console.log(token);
+        if (token) window.location.href = '/movies'
+    }, [token])
 
     const loginClicked = () => {
         API.loginUser({username, password})
-            .then( r => console.log(r.token))
+            .then( r => setToken(r.token))
             .catch(error => console.log(error));
     };
 
