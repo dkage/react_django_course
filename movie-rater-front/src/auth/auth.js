@@ -1,6 +1,7 @@
 import React, {useState, useContext, useEffect} from "react";
 import { API } from "../services/api-service";
-import {AuthContext, TokenContext} from "../index.js";
+// import {AuthContext, TokenContext} from "../index.js";
+import { useCookies } from "react-cookie";
 
 
 function Auth () {
@@ -8,16 +9,17 @@ function Auth () {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const {token, setToken} = useContext(TokenContext);
+    // const {token, setToken} = useContext(TokenContext);
+    const [token, setToken] = useCookies(['auth']);
 
     useEffect( () => {
         console.log(token);
-        if (token) window.location.href = '/movies'
-    }, [token])
+        if (token['auth']) window.location.href = '/movies'
+    }, [token]);
 
     const loginClicked = () => {
         API.loginUser({username, password})
-            .then( r => setToken(r.token))
+            .then( r => setToken('auth', r.token))
             .catch(error => console.log(error));
     };
 

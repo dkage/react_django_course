@@ -1,3 +1,4 @@
+// import React, { useState, createContext } from 'react';
 import React, { useState, createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -5,25 +6,27 @@ import App from './App';
 import Auth from "./auth/auth";
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { CookiesProvider } from "react-cookie";
 
 
-export const TokenContext = createContext(null)
+// export const TokenContext = createContext(null)
 
 function Router() {
 
-    const [token, setToken] = useState('')
-    // const TOKEN = ''
+    // const [token, setToken] = useState('');
 
 
     return (
 
         <BrowserRouter>
-            <TokenContext.Provider value={{token, setToken}}>
-                <Routes>
-                    <Route exact path="/" element={<Auth/>}/>
-                    <Route exact path="/movies" element={<App/>}/>
-                </Routes>
-            </TokenContext.Provider>
+            <CookiesProvider>
+                {/*<TokenContext.Provider value={{token, setToken}}>*/}
+                    <Routes>
+                        <Route exact path="/" element={<Auth/>}/>
+                        <Route exact path="/movies" element={<App/>}/>
+                    </Routes>
+                {/*</TokenContext.Provider>*/}
+            </CookiesProvider>
         </BrowserRouter>
 
     )

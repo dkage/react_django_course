@@ -5,6 +5,7 @@ import MovieDetails from "./components/movie_details";
 import MovieForm from "./components/movie_form";
 
 
+
 function App() {
 
     // State related and fixed variables/constants
