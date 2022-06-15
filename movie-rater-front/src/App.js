@@ -3,10 +3,12 @@ import './App.css';
 import MovieList from "./components/movie_list";
 import MovieDetails from "./components/movie_details";
 import MovieForm from "./components/movie_form";
+import {useCookies} from "react-cookie";
 
 
 
 function App() {
+    const [token] = useCookies(['auth']);
 
     // State related and fixed variables/constants
     const [movies, setMovies] = useState([['null']]);
@@ -51,11 +53,17 @@ function App() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Token 0d87fdef371f4fcffd3fd0f9d2c4964bd3d38988'
+                'Authorization': `Token ${token['auth']}`
             }
         }).then(r => r.json())
             .then(r => setMovies(r))
     }, []);
+
+
+    // This checks if token auth exists, validate if logged in
+    useEffect(() => {
+        if(!token['auth']) window.location.href = '/';
+    }, [token]);
 
 
 

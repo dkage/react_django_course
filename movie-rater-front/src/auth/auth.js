@@ -14,12 +14,15 @@ function Auth () {
 
     useEffect( () => {
         console.log(token);
+        console.log(token['auth']);
         if (token['auth']) window.location.href = '/movies'
     }, [token]);
 
     const loginClicked = () => {
         API.loginUser({username, password})
-            .then( r => setToken('auth', r.token))
+            .then( r => {
+                setToken('auth', r.token);
+            })
             .catch(error => console.log(error));
     };
 

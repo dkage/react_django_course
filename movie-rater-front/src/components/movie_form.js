@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { API } from "../services/api-service"
+import {useCookies} from "react-cookie";
 
 
 function MovieForm (props) {
+    const [token, setToken] = useCookies(['auth']);
 
     const mov = props.movie;
     const [title, setTitle]       = useState(mov.title);
     const [synopsis, setSynopsis] = useState(mov.synopsis);
     const updateClicked = () => {
-        API.updateMovie(mov.id, {title, synopsis}).then(r => props.updatedMovie(r))
+        API.updateMovie(mov.id, {title, synopsis}, token['auth']).then(r => props.updatedMovie(r))
             .catch( error => console.log(error) );
     }
     const createClicked = () => {
-        API.createMovie({title, synopsis})
+        API.createMovie({title, synopsis}, token['auth'])
             .then(r => props.movieCreated(r))
             .catch(error => console.log(error));
     }

@@ -3,10 +3,13 @@ import React from "react";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { API } from "../services/api-service"
+import {useCookies} from "react-cookie";
 
 
 
 function MovieList (props) {
+    const [token, setToken] = useCookies(['auth']);
+
 
     const movieClicked = movie => clickEvent => {
         props.movieClicked(movie);
@@ -25,7 +28,7 @@ function MovieList (props) {
     // }
 
     const deleteClicked = movie => {
-        API.deleteMovie(movie)
+        API.deleteMovie(movie, token['auth'])
             .then( () =>  props.deleteClicked(movie))
             .catch(error => console.log(error));
     }
