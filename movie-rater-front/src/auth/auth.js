@@ -47,8 +47,8 @@ function Auth () {
 
         <React.Fragment>
 
-            <div>
-                {isLoginView ? <h1>Login</h1> : <h1>Register</h1>}
+            <div className="App">
+                {isLoginView ? <h1 className="App-header">Login</h1> : <h1 className="App-header">Register</h1>}
 
 
                 <label htmlFor="username">Username</label><br/>
