@@ -10,7 +10,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 function App() {
-    const [token] = useCookies(['auth']);
+    const [token, setToken, delToken] = useCookies(['auth']);
+
 
     // State related and fixed variables/constants
     const [movies, setMovies] = useState([['null']]);
@@ -49,6 +50,9 @@ function App() {
 
         setMovies(listWithoutDeleted);
     }
+    const logoutUser = () => {
+        delToken('auth');
+    }
 
     useEffect(() => {
         fetch("http://127.0.0.1:8000/api/v1/movies/", {
@@ -73,6 +77,9 @@ function App() {
 
             <header className="App-header">
                 <h1><FontAwesomeIcon className={'icon-svg'} icon={solid('film')}/>Movie Rater - Web</h1>
+                <div className={'logout'}>
+                    <p onClick={logoutUser}><FontAwesomeIcon className={'icon-svg'} icon={solid('sign-out')}/>Logout</p>
+                </div>
             </header>
             <div className={'Layout'}>
 

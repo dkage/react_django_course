@@ -1,50 +1,63 @@
+body {
+    background-color: #282c34;
+}
+
 .App {
-  text-align: center;
-  background-color: #282c34;
-  min-height: 100vh;
-  color: white;
+    text-align: center;
+    background-color: #282c34;
+    min-height: 100vh;
+    color: white;
 }
 
 .App-header {
-  background-color: #5a5f6d;
-  min-height: 5vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+    background-color: #5a5f6d;
+    min-height: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+}
+
+
+.logout{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 20px;
 }
 
 
 .Layout{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  margin-left: 80px;
-  margin-right: 80px;
-  margin-top: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 80px;
 }
 
 
 .MovieDetails{
-  min-height: 700px;
-  border-radius: 25px;
-  background-color: #3e3d3d;
+    min-height: 700px;
+    border-radius: 25px;
+    background-color: #3e3d3d;
 }
 
 
 .ListItem {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 
 .ListItem:hover {
-  color: lightseagreen;
+    color: lightseagreen;
 }
 
 
 .orange {
-  color: goldenrod;
+    color: goldenrod;
 }
 
 .purple {
@@ -54,26 +67,26 @@
 
 
 .rate-container{
-  font-size: 1.4rem;
-  border: 5px solid purple;
-  border-radius: 25px;
-  padding-bottom: 35px;
+    font-size: 1.4rem;
+    border: 5px solid purple;
+    border-radius: 25px;
+    padding-bottom: 35px;
 }
 
 
 .movie-item {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  border: 1px darkgrey solid;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    border: 1px darkgrey solid;
 }
 
 .movie-item svg {
-  font-size: 1.2rem;
-  margin: 16px 5px;
+    font-size: 1.2rem;
+    margin: 16px 5px;
 }
 
 
 .icon-svg {
-  cursor: pointer;
-  padding-right: 15px;
+    cursor: pointer;
+    padding-right: 15px;
 }
