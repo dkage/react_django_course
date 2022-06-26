@@ -14,6 +14,15 @@ export class API {
         }).then(resp => resp.json())
     }
 
+    static getMovies (token) {
+        return fetch("http://127.0.0.1:8000/api/v1/movies/", {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${token['auth']}`
+            }
+        }).then(r => r.json());
+    }
 
     static createMovie (body, token) {
         return fetch(`http://127.0.0.1:8000/api/v1/movies/`, {

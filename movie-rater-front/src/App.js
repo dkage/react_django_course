@@ -3,10 +3,10 @@ import './App.css';
 import MovieList from "./components/movie_list";
 import MovieDetails from "./components/movie_details";
 import MovieForm from "./components/movie_form";
-import {useCookies} from "react-cookie";
+import { useCookies } from "react-cookie";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {useFetch} from "./hooks/useFetch";
 
 
 function App() {
