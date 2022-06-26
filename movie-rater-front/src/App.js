@@ -17,6 +17,7 @@ function App() {
     const [movies, setMovies] = useState([['null']]);
     const [selectedMovie, setSelectedMovie] = useState(undefined);
     const [editedMovie, setEditedMovie] = useState(undefined);
+    const [data, loading, error] = useFetch();
 
     // Arrow Functions for handling movies
     const loadMovie = movie => {
@@ -55,15 +56,9 @@ function App() {
     }
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/v1/movies/", {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Token ${token['auth']}`
-            }
-        }).then(r => r.json())
-            .then(r => setMovies(r))
-    }, []);
+        // console.log(data);
+        setMovies(data);
+    }, [data]);
 
 
     // This checks if token auth exists, validate if logged in
@@ -72,6 +67,8 @@ function App() {
     }, [token]);
 
 
+    if (loading) return <h1>Loading</h1>
+    if (error) return <h1>Error</h1>
     return (
         <div className="App">
 

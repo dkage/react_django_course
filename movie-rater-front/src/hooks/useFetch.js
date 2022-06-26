@@ -15,7 +15,7 @@ function useFetch () {
             setError();
 
             let err;
-            const data = await API.getMovies()
+            const data = await API.getMovies(token)
                 .catch(err = setError(err));
             setData(data);
             setLoading(false);
