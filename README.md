@@ -13,9 +13,11 @@ the basics of React.
 As everytime I worked with Django I used the Django templates to generate the front-end, I didn't know the
 structure of a Django API.
 
-<sub><sup>_By the way, my code logic and css differs a lot in many files from the classes, because I like to learn by challenge, stopping the videos and always trying 
-to make the code by myself first. Then I go back to the video and see the solution proposed.
-So many parts will differ from what is shown in the videos._</sub></sup>
+<sub><sup>
+_By the way, my code logic and css differs a lot in many files from the lessons videos, because I like to learn by challenge, 
+stopping the videos and always trying to make the code by myself first. Then I go back to the video and see the solution proposed.
+As many times I do in a different, but working that works the same way, many parts will differ from what is shown in the course._
+</sub></sup>
 
 # Personal Notes
 
@@ -24,7 +26,8 @@ So many parts will differ from what is shown in the videos._</sub></sup>
 - [x] Django API rest framework basics
 - [x] React basics
 - [x] Django project
-- [ ] React project
+- [x] React project
+- [ ] React Native project
 - [ ] Deployment :tada:
 
 ## Babel config for dynamic calls to font-awesome
